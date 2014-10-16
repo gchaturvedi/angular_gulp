@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="gulpPluginApp">
+    <head>
+        <meta charset="UTF-8">
+        <title>AngularJS</title>
+    </head>
+    <body id="outer" ng-controller="PluginsController">
+        <script type="text/javascript" src="js/lib/jquery-1.11.1.js"></script>
+        <script type="text/javascript" src="js/lib/angular.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/gulp.js"></script>
+        <div>
+            <div style="margin:0 auto; text-align:center;"><h1>Gulp Plugins</h2></h2>
+                <div>
+                <h2>Search: <input type="text" ng-model="pluginFilter" /></h2>
+                </div>
+                <br /><br />
+                <table>
+                    <tr>
+                        <th ng-click="doSort('name')">Name</th>
+                        <th ng-click="doSort('author')">Author</th>
+                        <th ng-click="doSort('blacklisted')">Blacklisted</th>
+                        <th ng-click="doSort('description')">Description</th>
+                        <th ng-click="doSort('downloads_this_month')">Downloads this Month</th>
+                        <th ng-click="doSort('github_forks')">GitHub forks</th>
+                        <th ng-click="doSort('github_repo')">GitHub Repository</th>
+                        <th ng-click="doSort('github_stars')">GitHub Stars</th>
+                        <th ng-click="doSort('time')">Time</th>
+                        <th ng-click="doSort('version')">Version</th>
+
+                    </tr>
+                    <tr ng-repeat="plugin in plugins | filter:pluginFilter | orderBy:sortBy:reverse track by $index ">
+                        <td>{{ plugin.name }}</td>
+                        <td>{{ plugin.author }}</td>
+                        <td>{{ plugin.blacklisted }}</td>
+                        <td>{{ plugin.description }}</td>
+                        <td>{{ plugin.downloads_this_month }}</td>
+                        <td>{{ plugin.github_forks }}</td>
+                        <td>{{ plugin.github_repo }}</td>
+                        <td>{{ plugin.github_stars }}</td>
+                        <td>{{ plugin.time }}</td>
+                        <td>{{ plugin.version }}</td>
+                    </tr>
+                </table>
+        </div>
+    </body>
+</html>
