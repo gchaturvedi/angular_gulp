@@ -3,4 +3,8 @@ This is a simple app in angularjs that lets you search and sort for gulp plugins
 
 Check it out at http://s3.amazonaws.com/gulp-plugin/index.html
 
-Thanks to Erik Dasque for providing the compilation of plugin data for the front-end.
+## Authors
+
+[Gaurav Chaturvedi](https://github.com/gchaturvedi)
+
+[Erik Dasque](https://github.com/edasque)
