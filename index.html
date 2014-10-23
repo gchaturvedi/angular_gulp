@@ -32,7 +32,7 @@
                         <th class="table-link" ng-click="doSort('github_repo')">GitHub Repository</th>
                         <th class="table-link" ng-click="doSort('time')">Updated</th>
                     </tr>
-                    <tr ng-repeat="plugin in filteredPlugins = (plugins | filter:pluginFilter | filter:{blacklisted:'!true'} |  orderBy:sortBy:reverse )">
+                    <tr ng-repeat="plugin in filteredPlugins = (plugins | filter:pluginFilter | filter:{blacklisted:'!true'} |  orderBy:sortBy:reverse ) track by $index">
                         <td style="width: 300px;padding-bottom:20px"><a target="_blank" ng-href="{{ plugin.links['npm'] }}">{{ plugin.name }}</a><br /><span class="description">{{ plugin.description }}</span></td>
                         <td style="width:200px;">{{ plugin.author }}</td>
                         <td>{{ plugin.downloads_this_month }}</td>
