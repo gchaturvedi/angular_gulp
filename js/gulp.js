@@ -3,6 +3,20 @@ var process_gulp_plugins = function() {
     var scope = angular.element($("#outer")).scope();
     scope.$apply(function(){
         scope.plugins = plugins;
+        for(var plugin of plugins) {
+            plugin.updated_ago = jQuery.timeago(plugin.time);
+            if(plugin.downloads_this_month == null) {
+                plugin.downloads_this_month = 0;
+            }
+
+            if(plugin.github_forks == null) {
+                plugin.github_forks = 0;
+            }
+
+            if(plugin.github_stars == null) {
+                plugin.github_stars = 0;
+            }
+        }
     })
 };
 
@@ -15,7 +29,6 @@ var process_gulp_plugins = function() {
         $scope.sortBy = 'name';
 
         $scope.doSort = function(propName) {
-            console.log(propName);
             $scope.sortBy = propName;
             $scope.reverse = !$scope.reverse;
         }

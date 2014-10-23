@@ -1,0 +1,39 @@
+.search-header {
+    width:750px; text-align:center; margin:0 auto;
+    margin-top:50px;
+}
+
+.logo {
+    left: 20px;
+    text-decoration: none;
+    color: inherit;
+    font-family: 'Grand Hotel',cursive;
+    font-size: 62px;
+    color:#FFFFFF;
+    margin: 0 auto;
+    padding-top:5%;
+}
+
+.header-container {
+    width:100%;
+    height:300px;
+    margin: 0 auto;
+    text-align: center;
+    background-color:#cf4646;
+}
+
+.table-link {
+    text-decoration: underline;
+    color:#428bca;
+    cursor: pointer;
+}
+
+.no-items {
+    text-align:center;
+    font-size:40px;
+}
+
+table {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
