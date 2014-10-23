@@ -2,11 +2,11 @@ var process_gulp_plugins = function() {
     var plugins = arguments[0];
     var scope = angular.element($("#outer")).scope();
     scope.$apply(function(){
-        scope.plugins = plugins;
+        var array;
+        arr = $.grep(plugins,function(n){ return(n) });
+        scope.plugins = arr;
         for(var plugin of plugins) {
             try {
-                plugin.updated_ago = jQuery.timeago(plugin.time);
-
                 if(plugin.downloads_this_month == null) {
                     plugin.downloads_this_month = 0;
                 }
@@ -18,9 +18,13 @@ var process_gulp_plugins = function() {
                 if(plugin.github_stars == null) {
                     plugin.github_stars = 0;
                 }
-
+                if(plugin.time == null) {
+                    plugin.updated_ago = "N/A";
+                } else {
+                    plugin.updated_ago = jQuery.timeago(plugin.time || 0);
+                }
             } catch(err) {
-
+                var x = 5;
             }
         }
     })
