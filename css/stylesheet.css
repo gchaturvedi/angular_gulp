@@ -1,5 +1,4 @@
 .search-header {
-    width:750px; text-align:center; margin:0 auto;
     margin-top:50px;
 }
 
@@ -41,6 +40,10 @@ body {
     padding-top:5%;
 }
 
+.no-results {
+  text-align:center;
+}
+
 .description {
     margin-top:5px;
     font-size:12px;
@@ -71,4 +74,9 @@ table {
     table-layout: fixed;
     word-wrap: break-word;
 }
+
+.ng-cloak,.x-ng-cloak,[data-ng-cloak],[ng-cloak],[ng\:cloak],[x-ng-cloak] {
+    display: none !important
+}
+
 

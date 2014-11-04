@@ -1,3 +1,5 @@
+'use strict';
+
 (function(window) {
     /*
      * AngularJS Controller method for displaying plugins.
