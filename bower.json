@@ -1,0 +1,22 @@
+{
+  "name": "angular_gulp",
+  "version": "0.0.0",
+  "homepage": "https://github.com/gchaturvedi/angular_gulp",
+  "authors": [
+    "Gaurav <gchaturvedi@constantcontact.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "~1.3.1",
+    "jquery": "~2.1.1",
+    "jquery-timeago": "~1.4.1"
+  }
+}
