@@ -13,6 +13,11 @@
             $scope.sortBy = propName;
             $scope.reverse = !$scope.reverse;
         }
+
+        $scope.pluginSearch = function(plugin) {
+            return plugin.name.indexOf($scope.pluginFilter) >= 0 || plugin.description.indexOf($scope.pluginFilter) >= 0
+        }
+
     };
 
     /*
@@ -22,6 +27,7 @@
     window.process_gulp_plugins = function(plugins) {
         var scope = angular.element($("#outer")).scope();
         clean_input(plugins, scope);
+        console.log(plugins);
     };
 
     /*

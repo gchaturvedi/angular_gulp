@@ -21,20 +21,21 @@
             </div>
             <div class="container">
                 <br /><br />
-                <div class="no-items" ng-hide="filteredPlugins.length">...</div>
                 <table class="table table-condensed table-hover">
-                    <tr ng-show="filteredPlugins.length">
-                        <th style="width:300px;padding-bottom:20px;" class="table-link" ng-click="doSort('name')">Name</th>
-                        <th style="width:200px;" class="table-link hidden-xs" ng-click="doSort('author')">Author</th>
+                    <tr>
+                        <th style="width:300px;padding-bottom:20px;">Name</th>
+                        <th style="width:200px;" class="hidden-xs">Author</th>
+                        <th>Version</th>
                         <th class="table-link hidden-xs" ng-click="doSort('downloads_this_month')">Downloads this Month</th>
                         <th style="width:50px;" class="table-link hidden-xs" ng-click="doSort('github_stars')"> Stars</th>
-                        <th style="width:50px;" class="table-link hidden-xs" ng-click="doSort('github_forks')">Forks</th>
-                        <th class="table-link hidden-xs" ng-click="doSort('github_repo')">GitHub Repository</th>
+                        <th style="width:50px;" class="hidden-xs">Forks</th>
+                        <th class="hidden-xs">GitHub Repository</th>
                         <th class="table-link hidden-xs" ng-click="doSort('time')">Updated</th>
                     </tr>
-                    <tr ng-repeat="plugin in filteredPlugins = (plugins | filter:pluginFilter | filter:{blacklisted:'!true'} |  orderBy:sortBy:reverse ) track by $index">
+                    <tr ng-repeat="plugin in plugins | filter:pluginSearch track by $index">
                         <td style="width: 300px;padding-bottom:20px"><a target="_blank" ng-href="{{ plugin.links['npm'] }}">{{ plugin.name }}</a><br /><span class="description">{{ plugin.description }}</span></td>
                         <td style="width:200px;" class="hidden-xs">{{ plugin.author }}</td>
+                        <td class="hidden-xs">{{ plugin.version }}</td>
                         <td class="hidden-xs">{{ plugin.downloads_this_month }}</td>
                         <td style="width:50px;" class="hidden-xs">{{ plugin.github_stars }}</td>
                         <td style="width:50px;" class="hidden-xs">{{ plugin.github_forks }}</td>
