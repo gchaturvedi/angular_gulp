@@ -1,6 +1,6 @@
-'use strict';
-
 (function(window) {
+    "use strict";
+
     /*
      * AngularJS Controller method for displaying plugins.
      */
@@ -14,11 +14,11 @@
         $scope.doSort = function(propName) {
             $scope.sortBy = propName;
             $scope.reverse = !$scope.reverse;
-        }
+        };
 
         $scope.pluginSearch = function(plugin) {
-            return plugin.name.indexOf($scope.pluginFilter) >= 0 || plugin.description.indexOf($scope.pluginFilter) >= 0
-        }
+            return plugin.name.indexOf($scope.pluginFilter) >= 0 || plugin.description.indexOf($scope.pluginFilter) >= 0;
+        };
 
     };
 
@@ -38,23 +38,24 @@
     function clean_input(plugins, scope) {
         scope.$apply(function(){
             var array;
-            clean_input
-            array = $.grep(plugins,function(n){ return(n) });
+            array = $.grep(plugins,function(n) {
+                return(n);
+             });
             scope.plugins = array;
             for(var plugin of plugins) {
                 try {
-                    if(plugin.downloads_this_month == null) {
+                    if(plugin.downloads_this_month === null) {
                         plugin.downloads_this_month = 0;
                     }
 
-                    if(plugin.github_forks == null) {
+                    if(plugin.github_forks === null) {
                         plugin.github_forks = 0;
                     }
 
-                    if(plugin.github_stars == null) {
+                    if(plugin.github_stars === null) {
                         plugin.github_stars = 0;
                     }
-                    if(plugin.time == null) {
+                    if(plugin.time === null) {
                         plugin.updated_ago = "N/A";
                     } else {
                         plugin.updated_ago = jQuery.timeago(plugin.time || 0);
@@ -63,8 +64,8 @@
                     var x = 5;
                 }
             }
-        })
-    };
+        });
+    }
 
     /*
      * Inject $scope for Views and retrieval from
