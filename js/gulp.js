@@ -50,27 +50,15 @@
                 return(n);
              });
             scope.plugins = array;
-            for(var plugin of plugins) {
-                try {
-                    if(plugin.downloads_this_month == null) {
-                        plugin.downloads_this_month = 0;
-                    }
-
-                    if(plugin.github_forks == null) {
-                        plugin.github_forks = 0;
-                    }
-
-                    if(plugin.github_stars == null) {
-                        plugin.github_stars = 0;
-                    }
-                    if(plugin.time == null) {
-                        plugin.updated_ago = "N/A";
-                    } else {
-                        plugin.updated_ago = jQuery.timeago(plugin.time || 0);
-                    }
-                } catch(err) {
-                    var x = 5;
-                }
+            var i;
+            for(i=0;i < scope.plugins.length; i++) {
+                console.log(scope.plugins[i]);
+                var o = scope.plugins[i];
+                o.downloads_this_month = o.downloads_this_month || 0;
+                o.github_forks = o.github_forks || 0;
+                o.github_stars = o.github_stars || 0;
+                o.time = o.time || 0;
+                o.updated_ago = jQuery.timeago(o.time);
             }
         });
     }
