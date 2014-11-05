@@ -52,7 +52,6 @@
             scope.plugins = array;
             var i;
             for(i=0;i < scope.plugins.length; i++) {
-                console.log(scope.plugins[i]);
                 var o = scope.plugins[i];
                 o.downloads_this_month = o.downloads_this_month || 0;
                 o.github_forks = o.github_forks || 0;
