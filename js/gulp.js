@@ -16,7 +16,7 @@
             $scope.reverse = !$scope.reverse;
         };
 
-        $scope.doSort('github_stars');
+        $scope.doSort('downloads_this_month');
 
         $scope.pluginSearch = function(plugin) {
             if (plugin.blacklisted === true) {
