@@ -20,24 +20,24 @@
         <div ng-controller="PluginsController">
             <div class="header-container">
                 <h1 class="logo">Search gulp.js plugins with some flair.</h1>
-                <h2 class="search-header"><input ng-cloak ng-change="limit=15" type="text" placeholder="Search {{ plugins.length }} plugins..." class="form-control text-center span12" ng-model="searchFilter" autofocus/></h2>
+                <h2 class="search-header"><input ng-cloak ng-change="limit=15" type="text" placeholder="Search {{ (plugins | filter:pluginSearch ).length }} plugins..." class="form-control text-center span12" ng-model="searchFilter" autofocus/></h2>
             </div>
             <div class="container">
                 <section class="ng-cloak" ng-init="limit=20" infinite-scroll="limit=limit+25" role="main">
                     <br /><br />
                     <table class="table table-condensed table-hover">
                         <div class="no-results" ng-hide="(plugins | filter:searchFilter).length"> No results found...</div>
-                        <tr ng-show="(plugins | filter:searchFilter).length">
+                        <tr ng-show="(plugins | filter:pluginSearch ).length">
                             <th style="width:300px;padding-bottom:20px;">Name</th>
-                            <th style="width:200px;" class="hidden-xs">Author</th>
+                            <th style="width:150px;" class="hidden-xs">Author</th>
                             <th class="hidden-xs">Version</th>
                             <th class="table-link hidden-xs" ng-click="doSort('downloads_this_month')">Downloads this Month</th>
                             <th style="width:50px;" class="table-link hidden-xs" ng-click="doSort('github_stars')"> Stars</th>
-                            <th style="width:50px;" class="hidden-xs">Forks</th>
+                            <th style="width:50px;" class="table-link hidden-xs" ng-click="doSort('github_stars')">Forks</th>
                             <th class="hidden-xs">GitHub Repository</th>
                             <th class="table-link hidden-xs" ng-click="doSort('time')">Updated</th>
                         </tr>
-                        <tr ng-repeat="plugin in plugins | filter:searchFilter | filter:{blacklisted:'!true'} | orderBy:sortBy:reverse | limitTo:limit track by $index">
+                        <tr ng-repeat="plugin in plugins | filter:pluginSearch | orderBy:sortBy:reverse | limitTo:limit track by $index">
                             <td style="width: 300px;padding-bottom:20px"><a target="_blank" ng-href="{{ plugin.links['npm'] }}">{{ plugin.name }}</a><br /><span class="description">{{ plugin.description }}</span></td>
                             <td style="width:200px;" class="hidden-xs">{{ plugin.author }}</td>
                             <td class="hidden-xs">{{ plugin.version }}</td>

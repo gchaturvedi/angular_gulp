@@ -17,9 +17,18 @@
         };
 
         $scope.pluginSearch = function(plugin) {
-            return plugin.name.indexOf($scope.pluginFilter) >= 0 || plugin.description.indexOf($scope.pluginFilter) >= 0;
-        };
+            if (plugin.blacklisted === true) {
+                return false;
+            }
 
+            if (!$scope.searchFilter) {
+                return true;
+            } else {
+                var name = plugin.name.toLowerCase();
+                var desc = plugin.description.toLowerCase();
+                return name.indexOf($scope.searchFilter) >= 0 || desc.indexOf($scope.searchFilter) >= 0;
+            }
+        };
     };
 
     /*
@@ -29,7 +38,6 @@
     window.process_gulp_plugins = function(plugins) {
         var scope = angular.element($("#outer")).scope();
         clean_input(plugins, scope);
-        console.log(plugins);
     };
 
     /*
@@ -44,18 +52,18 @@
             scope.plugins = array;
             for(var plugin of plugins) {
                 try {
-                    if(plugin.downloads_this_month === null) {
+                    if(plugin.downloads_this_month == null) {
                         plugin.downloads_this_month = 0;
                     }
 
-                    if(plugin.github_forks === null) {
+                    if(plugin.github_forks == null) {
                         plugin.github_forks = 0;
                     }
 
-                    if(plugin.github_stars === null) {
+                    if(plugin.github_stars == null) {
                         plugin.github_stars = 0;
                     }
-                    if(plugin.time === null) {
+                    if(plugin.time == null) {
                         plugin.updated_ago = "N/A";
                     } else {
                         plugin.updated_ago = jQuery.timeago(plugin.time || 0);
