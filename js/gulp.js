@@ -5,16 +5,18 @@
      * AngularJS Controller method for displaying plugins.
      */
     var PluginsController = function ($scope) {
+
         var jqxhr = jQuery.getJSON("https://s3.amazonaws.com/bunchofjson/gulp-plugins.jsonp?callback=?", {
             dataType: 'jsonp'
         });
         $scope.reverse = false;
-        $scope.sortBy = '!downloads_this_month';
 
         $scope.doSort = function(propName) {
             $scope.sortBy = propName;
             $scope.reverse = !$scope.reverse;
         };
+
+        $scope.doSort('github_stars');
 
         $scope.pluginSearch = function(plugin) {
             if (plugin.blacklisted === true) {
